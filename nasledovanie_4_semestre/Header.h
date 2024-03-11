@@ -1,13 +1,7 @@
 #pragma once
 #ifndef HEADER_H
 #define HEADER_H
-
-
 #include <iostream>
-
-  
-
-
 class Shape {
 public:
     double const pi = 3.14;
@@ -42,7 +36,7 @@ public:
     }
 
 
-private:
+protected:
     float area;
     virtual double CalculateArea() const = 0;
     void CalculateArea(std::string shape);
@@ -52,7 +46,7 @@ private:
 class Shape3D : public Shape {
 public:
     float volume;
-private:
+protected:
     virtual double CalculateVolume() const = 0;
     void CalculateVolume(float side, float base, float height);
     virtual void CalculateVolume() = 0;
@@ -73,7 +67,7 @@ private:
     }
 };
 class Square : public Shape2D {
-private: 
+protected:
     float side;
 public:
     Square(float s) {
@@ -81,7 +75,7 @@ public:
     }
 };
 class Triangle : public Shape2D {
-private:
+protected:
     float base;
     float height; 
 public:
@@ -91,7 +85,7 @@ public:
 }
 };
 class Circle : public Shape2D {
-private:
+protected:
     float radius;
 public:
     Circle(float r) {
@@ -99,7 +93,7 @@ public:
     }
  };
 class TrianglePyramid : public Shape3D {
-private:
+protected:
    float height;
 public:
     TrianglePyramid(float h) {
@@ -107,15 +101,16 @@ public:
     }
 };
 class Cylinder : public Shape3D {
-private:
-    float height;
+protected:
+   float height;
 public:
     Cylinder(float h) {
         height = h;
     }
 };
 class Sphere : public Shape3D {
-private:
+protected:
+    
     float radius;
 public:
     Sphere(float r) {
