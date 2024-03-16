@@ -7,7 +7,6 @@ class Shape {
 public:
     float const pi = 3.14;
     float shape;
-    //virtual void scale(float scaleFactor) = 0;
     virtual void ShowInfo() = 0; 
     virtual std::string GetName() = 0;
     virtual ~Shape() {}
@@ -15,32 +14,28 @@ public:
 
 class Shape2D : public Shape {
 public:
-float GetArea() {
+    float GetArea() {
         return area;
     }
-bool operator>(Shape2D& other) {
+    bool operator>(Shape2D& other) {
         return this->area > other.area;
     }
-bool operator<(Shape2D& other) {
+    bool operator<(Shape2D& other) {
         return this->area < other.area;
     }
-bool operator==(Shape2D& other) {
+    bool operator==(Shape2D& other) {
         return this->area == other.area;
     }
 
 protected:
-  float area;
-  virtual double CalculateArea() = 0;
+    virtual double CalculateArea() = 0;
  };
 
 class Shape3D : public Shape {
 public:
     float volume;
     void ShowInfo() {
-        std::cout << "hello! I'm" << shape << std::endl;
-        std::cout << "my area: " << volume << std::endl;
-
-    }
+}
 protected:
     virtual double CalculateVolume() const = 0;
     void CalculateVolume(std::string shape);
@@ -79,7 +74,7 @@ public:
     std::string GetName() {
         return "Triangle";
     }
-    float CalculateArea() override {
+    float CalculateArea()  override {
         return  0.5 * base * height;
     };
 
