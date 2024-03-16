@@ -2,53 +2,48 @@
 #ifndef HEADER_H
 #define HEADER_H
 #include <iostream>
+#include <string>
 class Shape {
 public:
-    double const pi = 3.14;
+    float const pi = 3.14;
     float shape;
-    virtual void scale(float scaleFactor) = 0;
-    virtual void ShowInfo() const = 0; 
-        
-    virtual std::string GetName() const = 0;
-   
-
+    //virtual void scale(float scaleFactor) = 0;
+    virtual void ShowInfo() = 0; 
+    virtual std::string GetName() = 0;
     virtual ~Shape() {}
 };
 
 class Shape2D : public Shape {
 public:
-
-    
-    float GetArea() {
+float GetArea() {
         return area;
     }
-
-    bool operator>(Shape2D& other) {
+bool operator>(Shape2D& other) {
         return this->area > other.area;
     }
-
-    bool operator<(Shape2D& other) {
+bool operator<(Shape2D& other) {
         return this->area < other.area;
     }
-
-    bool operator==(Shape2D& other) {
+bool operator==(Shape2D& other) {
         return this->area == other.area;
     }
 
-
 protected:
-    float area;
-    virtual double CalculateArea() const = 0;
-    void CalculateArea(std::string shape);
-    virtual void CalculateArea() = 0;
-};
+  float area;
+  virtual double CalculateArea() = 0;
+ };
 
 class Shape3D : public Shape {
 public:
     float volume;
+    void ShowInfo() {
+        std::cout << "hello! I'm" << shape << std::endl;
+        std::cout << "my area: " << volume << std::endl;
+
+    }
 protected:
     virtual double CalculateVolume() const = 0;
-    void CalculateVolume(float side, float base, float height);
+    void CalculateVolume(std::string shape);
     virtual void CalculateVolume() = 0;
     float GetArea() {
         return volume;
@@ -77,13 +72,25 @@ public:
 class Triangle : public Shape2D {
 protected:
     float base;
-    float height; 
+    float height;
 public:
-    Triangle(float b, float h) {
-        height = h;
-        base = b;
-}
+    Triangle(float b, float h) : base(b), height(h) {}
+
+    std::string GetName() {
+        return "Triangle";
+    }
+    float CalculateArea() override {
+        return  0.5 * base * height;
+    };
+
+    void ShowInfo() override {
+        std::cout << "Shape: " << GetName() << std::endl;
+        std::cout << "Base: " << base << ", Height: " << height << std::endl;
+        std::cout << "my area: " << CalculateArea() << std::endl;
+    }
+     
 };
+
 class Circle : public Shape2D {
 protected:
     float radius;
@@ -118,4 +125,4 @@ public:
 
     }
 };
-#endif
+#endif HEADER_H
