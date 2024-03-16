@@ -32,31 +32,31 @@ void GetName() {
 //    }
 
     
-}
+
 
 
 
    
-void Shape3D::CalculateVolume(std::string shape) {
-    float volume;
-    if (shape == "TrianglePyramid") {
-        float base = 0.0;
-        float height = 0.0;
-        
-    }
-    else if (shape == "Cylinder") {
-        float height = 0.0;
-        float radius = 0.0;
-        
-        volume = pi * pow(radius, 2) * height;
-    }
-    else if (shape == "Sphere") {
-        float radius = 0.0; 
-        volume = (4 * pi * pow(radius, 3)) / 3;
-    }
-    else {
-        std::cout << "Ошибка: недопустимая фигура\n";
-        volume = -1.0;
-    }
-};
+//voidShape3D::CalculateVolume(std::stringshape){
+//floatvolume;
+//if(shape=="TrianglePyramid"){
+//floatbase=0.0;
+//floatheight=0.0;
+
+//}
+//elseif(shape=="Cylinder"){
+//floatheight=0.0;
+//floatradius=0.0;
+
+//volume=pi*pow(radius,2)*height;
+//}
+//elseif(shape=="Sphere"){
+//floatradius=0.0;
+//volume=(4*pi*pow(radius,3))/3;
+//}
+//else{
+//std::cout<<"Ошибка:недопустимаяфигура\n";
+//volume=-1.0;
+//}
+//};
 

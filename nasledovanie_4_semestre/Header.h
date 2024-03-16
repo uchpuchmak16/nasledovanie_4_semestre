@@ -28,6 +28,7 @@ public:
     }
 
 protected:
+    float area;
     virtual double CalculateArea() = 0;
  };
 
@@ -74,7 +75,7 @@ public:
     std::string GetName() {
         return "Triangle";
     }
-    float CalculateArea()  override {
+    double CalculateArea()  override {
         return  0.5 * base * height;
     };
 
