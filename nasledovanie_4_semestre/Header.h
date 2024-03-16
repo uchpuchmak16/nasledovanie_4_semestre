@@ -3,6 +3,8 @@
 #define HEADER_H
 #include <iostream>
 #include <string>
+#include <cmath>
+
 class Shape {
 public:
     float const pi = 3.14;
@@ -38,9 +40,8 @@ public:
     void ShowInfo() {
 }
 protected:
-    virtual double CalculateVolume() const = 0;
-    void CalculateVolume(std::string shape);
-    virtual void CalculateVolume() = 0;
+    
+    virtual double CalculateVolume() = 0;
     float GetArea() {
         return volume;
     }
@@ -61,8 +62,17 @@ class Square : public Shape2D {
 protected:
     float side;
 public:
-    Square(float s) {
-        side = s;
+    Square(float s) : side(s) {}
+    std::string GetName() {
+        return "Square";
+    }
+    double CalculateArea()  override {
+        return  side * side;
+    };
+    void ShowInfo() override {
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my base: " << side << std::endl;
+        std::cout << "my area: " << CalculateArea() << std::endl;
     }
 };
 class Triangle : public Shape2D {
@@ -80,45 +90,87 @@ public:
     };
 
     void ShowInfo() override {
-        std::cout << "Shape: " << GetName() << std::endl;
-        std::cout << "Base: " << base << ", Height: " << height << std::endl;
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my base: " << base << ", my height: " << height << std::endl;
         std::cout << "my area: " << CalculateArea() << std::endl;
     }
      
 };
-
 class Circle : public Shape2D {
 protected:
     float radius;
 public:
-    Circle(float r) {
-        radius = r;
+    Circle(float r): radius(r) {}
+
+    std::string GetName() {
+        return "Circle";
+    }
+    double CalculateArea()  override {
+        return  pi * radius * radius;
+    };
+    void ShowInfo() override {
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my radius: " << radius << std::endl;
+        std::cout << "my area: " << CalculateArea() << std::endl;
     }
  };
 class TrianglePyramid : public Shape3D {
 protected:
    float height;
+   float base;
 public:
-    TrianglePyramid(float h) {
-        height = h;
+    TrianglePyramid(float h, float b): height(h), base(b) {}
+
+    std::string GetName() {
+        return "TrianglePyramid";
+    }
+    double CalculateVolume()  override {
+        return  (height * base)/(4* std::sqrt(3)) ;
+    };
+    void ShowInfo() override {
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my base: " << base << " my height: " << height << std::endl;
+        std::cout << "my volume: " << CalculateVolume() << std::endl;
     }
 };
 class Cylinder : public Shape3D {
 protected:
    float height;
+   float radius;
 public:
-    Cylinder(float h) {
-        height = h;
+    Cylinder(float h, float r): height(h), radius(r) {}
+
+    std::string GetName() {
+        return "Cylinder";
     }
+    double CalculateVolume()  override {
+        return  pi * radius * radius * height;
+    };
+    void ShowInfo() override {
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my radius: " << radius << " my height: " << height << std::endl;
+        std::cout << "my volume: " << CalculateVolume() << std::endl;
+    }
+
 };
 class Sphere : public Shape3D {
 protected:
     
     float radius;
 public:
-    Sphere(float r) {
-        radius =r;
+    Sphere(float r): radius(r) {}
 
+    std::string GetName() {
+        return "Sphere";
     }
+    double CalculateVolume()  override {
+        return 4 * pi * radius * radius ;
+    };
+    void ShowInfo() override {
+        std::cout << "hi! i'm: " << GetName() << std::endl;
+        std::cout << "my radius: " << radius  << std::endl;
+        std::cout << "my volume: " << CalculateVolume() << std::endl;
+    }
+
 };
 #endif HEADER_H

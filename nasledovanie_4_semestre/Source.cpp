@@ -5,12 +5,21 @@
 int main() {
   
     Triangle tr(2,5); 
-
     tr.ShowInfo(); 
     
-    return 0;
-   
+    Square sq(4);
+    sq.ShowInfo();
 
+    Circle cr(4);
+    cr.ShowInfo();
+
+    TrianglePyramid tp(4,5);
+    tp.ShowInfo();
+
+    Sphere sp(2);
+    sp.ShowInfo();
+    return 0;
+    
    
 
 };
